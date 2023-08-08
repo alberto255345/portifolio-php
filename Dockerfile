@@ -4,6 +4,12 @@ FROM php:7.4-apache
 RUN docker-php-ext-install pdo pdo_mysql
 # Copie os arquivos da sua aplicação para o diretório de trabalho no contêiner
 COPY . /var/www/html/
+# Install Composer
+RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install project dependencies
+RUN composer install
+
 # Configure o VirtualHost do Apache para a aplicação CakePHP
 RUN echo "<VirtualHost *:80>\n\ DocumentRoot /var/www/html/webroot\n\ <Directory 
     /var/www/html/webroot>\n\
