@@ -11,10 +11,10 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 RUN composer install
 
 # Configure o VirtualHost do Apache para a aplicação CakePHP
-RUN echo "<VirtualHost *:80>\n\ DocumentRoot /var/www/html/webroot\n\ <Directory 
-    /var/www/html/webroot>\n\
-        AllowOverride All\n\ Require all granted\n\ </Directory>\n\ 
-</VirtualHost>" > /etc/apache2/sites-available/000-default.conf
+# RUN echo "<VirtualHost *:80>\n\ DocumentRoot /var/www/html/webroot\n\ <Directory 
+#     /var/www/html/webroot>\n\
+#         AllowOverride All\n\ Require all granted\n\ </Directory>\n\ 
+# </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
 # Habilite o módulo rewrite do Apache
 RUN a2enmod rewrite
 # Use a imagem oficial do MySQL como serviço de banco de dados Certifique-se de 
